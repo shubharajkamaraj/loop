@@ -56,6 +56,8 @@ export default function DashboardPage() {
     loadDashboard();
   }, []);
 
+  /* ---------------- LOADING ---------------- */
+
   if (loading) {
     return (
       <main className="min-h-screen bg-gray-50 p-8">
@@ -72,6 +74,8 @@ export default function DashboardPage() {
     );
   }
 
+  /* ---------------- ERROR ---------------- */
+
   if (error) {
     return (
       <main className="min-h-screen bg-gray-50 p-8">
@@ -81,12 +85,16 @@ export default function DashboardPage() {
           </h1>
 
           <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-5">
-            <p className="font-medium text-red-700">{error}</p>
+            <p className="font-medium text-red-700">
+              {error}
+            </p>
           </div>
         </div>
       </main>
     );
   }
+
+  /* ---------------- NO DATA ---------------- */
 
   if (!data) {
     return (
@@ -104,6 +112,8 @@ export default function DashboardPage() {
     );
   }
 
+  /* ---------------- DASHBOARD ---------------- */
+
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <div className="mx-auto max-w-7xl">
@@ -119,7 +129,8 @@ export default function DashboardPage() {
           </p>
         </div>
 
-        {/* Overview */}
+        {/* ================= FEEDBACK STATISTICS ================= */}
+
         <h2 className="mb-4 text-xl font-semibold text-gray-900">
           Feedback Statistics
         </h2>
@@ -130,7 +141,7 @@ export default function DashboardPage() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
 
-          {/* Total */}
+          {/* Total Feedback */}
           <div className="rounded-xl border bg-white p-5 shadow-sm">
             <p className="text-sm font-medium text-gray-500">
               Total Feedback
@@ -187,7 +198,8 @@ export default function DashboardPage() {
 
         </div>
 
-        {/* Analytics */}
+        {/* ================= ANALYTICS ================= */}
+
         <h2 className="mb-4 mt-10 text-xl font-semibold text-gray-900">
           Analytics
         </h2>
@@ -246,16 +258,18 @@ export default function DashboardPage() {
 
         </div>
 
-        {/* Quick Actions */}
+        {/* ================= FEEDBACK MANAGEMENT ================= */}
+
         <h2 className="mb-4 mt-10 text-xl font-semibold text-gray-900">
           Feedback Management
         </h2>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
+          {/* View Feedback */}
           <a
             href="/feedback"
-            className="rounded-xl border bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="rounded-xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           >
             <h3 className="font-semibold text-gray-900">
               View Feedback
@@ -266,9 +280,10 @@ export default function DashboardPage() {
             </p>
           </a>
 
+          {/* Add Feedback */}
           <a
             href="/feedback/add"
-            className="rounded-xl border bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="rounded-xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           >
             <h3 className="font-semibold text-gray-900">
               Add Feedback
@@ -279,9 +294,10 @@ export default function DashboardPage() {
             </p>
           </a>
 
+          {/* Import CSV */}
           <a
             href="/feedback/import"
-            className="rounded-xl border bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="rounded-xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           >
             <h3 className="font-semibold text-gray-900">
               Import CSV
@@ -289,6 +305,21 @@ export default function DashboardPage() {
 
             <p className="mt-1 text-sm text-gray-500">
               Import multiple feedback records.
+            </p>
+          </a>
+
+          {/* Ask LOOP */}
+          <a
+            href="/ask"
+            className="rounded-xl border border-blue-200 bg-blue-50 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <h3 className="font-semibold text-blue-700">
+              Ask LOOP
+            </h3>
+
+            <p className="mt-1 text-sm text-blue-600">
+              Ask questions about customer feedback and get
+              AI-powered answers.
             </p>
           </a>
 
